@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpass - Checklist de Retirada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .wizard-container { max-width: 500px; margin: 20px auto; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .step { display: none; }
+        .step.active { display: block; }
+        
+        .step-header { text-align: center; margin-bottom: 25px; }
+        .progress-bar { display: flex; justify-content: space-between; margin-bottom: 30px; position: relative; }
+        .progress-bar::before { content: ""; background: #ddd; height: 2px; width: 100%; position: absolute; top: 50%; z-index: 1; }
+        .dot { width: 30px; height: 30px; background: #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; font-weight: bold; }
+        .dot.active { background: var(--secondary); color: white; }
+
+        /* Estilo para Fotos e Inputs */
+        .photo-upload { border: 2px dashed #bbb; padding: 20px; text-align: center; border-radius: 10px; margin-bottom: 15px; cursor: pointer; }
+        .damage-map { width: 100%; height: 200px; background: #f9f9f9; border: 1px solid #ddd; position: relative; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+        
+        .signature-pad { width: 100%; height: 150px; border: 1px solid #000; background: #fff; margin-bottom: 20px; border-radius: 5px; }
+        
+        .btn-next { background: var(--secondary); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
+        .btn-prev { background: #666; color: white; border: none; padding: 10px; width: 100%; border-radius: 8px; margin-top: 10px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="wizard-container">
+    <div class="progress-bar">
+        <div class="dot active" id="dot1">1</div>
+        <div class="dot" id="dot2">2</div>
+        <div class="dot" id="dot3">3</div>
+    </div>
+
+    <form id="checklistForm">
+        <div class="step active" id="step1">
+            <div class="step-header">
+                <h2>📸 Passo 1: Registros</h2>
+                <p>Tire fotos do painel e do veículo</p>
+            </div>
+            <div class="photo-upload" onclick="alert('Abrir Câmera para Hodômetro')">
+                📷 Foto do Hodômetro (KM)
+            </div>
+            <div class="photo-upload" onclick="alert('Abrir Câmera para Combustível')">
+                ⛽ Nível de Combustível
+            </div>
+            <button type="button" class="btn-next" onclick="nextStep(2)">Próximo Passo</button>
+        </div>
+
+        <div class="step" id="step2">
+            <div class="step-header">
+                <h2>🚗 Passo 2: Avarias</h2>
+                <p>Toque no diagrama para marcar danos</p>
+            </div>
+            <div class="damage-map">
+                [Diagrama do Carro para Marcação]
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin-top: 10px;">Toque nas áreas com riscos ou amassados.</p>
+            <button type="button" class="btn-next" onclick="nextStep(3)">Revisão Final</button>
+            <button type="button" class="btn-prev" onclick="nextStep(1)">Voltar</button>
+        </div>
+
+        <div class="step" id="step3">
+            <div class="step-header">
+                <h2>✍️ Passo 3: Validação</h2>
+                <p>Assine para confirmar a retirada</p>
+            </div>
+            <label>Assinatura Digital:</label>
+            <div class="signature-pad"></div>
+            <p>Confirmo que recebi a chave, documentos e o carro revisado.</p>
+           <button type="submit" class="btn-next" style="background: var(--success);" onclick="alert('Vistoria concluída!'); window.location.href='/dashboard'; return false;">
+    Finalizar Retirada
+</button>
+            <button type="button" class="btn-prev" onclick="nextStep(2)">Voltar</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function nextStep(step) {
+        // Esconde todos os passos
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+        
+        // Ativa o passo atual
+        document.getElementById('step' + step).classList.add('active');
+        
+        // Atualiza a barra de progresso
+        for(let i=1; i<=step; i++) {
+            document.getElementById('dot' + i).classList.add('active');
+        }
+    }
+</script>
+
+</body>
+</html>

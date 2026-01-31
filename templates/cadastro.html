@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Carpass - Ficha Técnica</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        :root { --primary: #2c3e50; --accent: #3498db; --success: #27ae60; }
+        body { display: flex; background-color: #f4f7f6; margin: 0; font-family: 'Segoe UI', sans-serif; }
+        
+        .form-section { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .form-section h3 { color: var(--primary); font-size: 1.1rem; margin-bottom: 15px; display: flex; align-items: center; }
+        
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        
+        label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; color: #34495e; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; }
+
+        /* Estilo do Toggle (Duplo Comando) */
+        .switch-container { display: flex; align-items: center; justify-content: space-between; background: #fff3cd; padding: 15px; border-radius: 8px; border: 1px solid #ffeeba; }
+        .switch { position: relative; display: inline-block; width: 50px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 24px; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--success); }
+        input:checked + .slider:before { transform: translateX(26px); }
+
+        /* Upload Area */
+        .upload-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+        .upload-box { border: 2px dashed #bbb; padding: 10px; text-align: center; border-radius: 8px; font-size: 0.8rem; cursor: pointer; transition: 0.3s; }
+        .upload-box:hover { border-color: var(--accent); background: #ebf5fb; }
+        .upload-box input { display: none; }
+    </style>
+</head>
+<body>
+
+<aside class="sidebar">
+    <h2>CARPASS</h2>
+    <nav><a href="/dashboard">🏠 Voltar ao Painel</a></nav>
+</aside>
+
+<main class="main-content" style="padding: 30px; flex: 1;">
+    <div style="max-width: 900px; background: white; padding: 35px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); margin: auto;">
+        <h2 style="color: var(--primary); margin-top: 0;">Ficha Técnica do Veículo</h2>
+        <p style="color: #7f8c8d; margin-bottom: 30px;">Preencha os dados oficiais para disponibilizar o veículo na plataforma.</p>
+        
+        <form action="/salvar_veiculo" method="POST" enctype="multipart/form-data">
+            
+            <div class="form-section">
+                <h3>🔍 Identificação Oficial</h3>
+                <div class="grid-3">
+                    <div>
+                        <label>Placa</label>
+                        <input type="text" name="placa" placeholder="ABC1D23" required>
+                    </div>
+                    <div>
+                        <label>Chassi</label>
+                        <input type="text" name="chassi" placeholder="Número do Chassi">
+                    </div>
+                    <div>
+                        <label>RENAVAM</label>
+                        <input type="text" name="renavam" placeholder="Número do Renavam">
+                    </div>
+                </div>
+                <div class="grid-2" style="margin-top: 15px;">
+                    <div>
+                        <label>Modelo e Ano</label>
+                        <input type="text" name="modelo_veiculo" placeholder="Ex: Toyota Corolla 2024" required>
+                    </div>
+                    <div>
+                        <label>Cor Predominante</label>
+                        <input type="text" name="cor" placeholder="Ex: Branco Perolizado">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>⚙️ Especificações Técnicas</h3>
+                <div class="grid-3">
+                    <div>
+                        <label>Categoria</label>
+                        <select name="categoria">
+                            <option value="hatch">Hatch</option>
+                            <option value="sedan">Sedan</option>
+                            <option value="suv">SUV / Utilitário</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Transmissão</label>
+                        <select name="transmissao">
+                            <option value="manual">Manual</option>
+                            <option value="automatica">Automática</option>
+                        </select>
+                    </div>
+                    <div class="switch-container">
+                        <span style="font-weight: bold; font-size: 0.85rem;">Possui Duplo Comando?</span>
+                        <label class="switch">
+                            <input type="checkbox" name="duplo_comando">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>📸 Fotos e Documentos (Upload)</h3>
+                <div class="upload-grid">
+                    <label class="upload-box">
+                        <span>📄 CRLV (Doc)</span>
+                        <input type="file" name="foto_doc" accept="image/*">
+                    </label>
+                    <label class="upload-box">
+                        <span>🚗 Frente</span>
+                        <input type="file" name="foto_frente" accept="image/*">
+                    </label>
+                    <label class="upload-box">
+                        <span>🚗 Traseira</span>
+                        <input type="file" name="foto_tras" accept="image/*">
+                    </label>
+                    <label class="upload-box">
+                        <span>🚗 Lateral</span>
+                        <input type="file" name="foto_lateral" accept="image/*">
+                    </label>
+                    <label class="upload-box">
+                        <span>💺 Interior</span>
+                        <input type="file" name="foto_interior" accept="image/*">
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section" style="border-bottom: none;">
+                <div style="background: #eef2f7; padding: 20px; border-radius: 8px; border-left: 5px solid #3498db;">
+                    <label style="display: flex; align-items: center; font-weight: bold; cursor: pointer;">
+                        <input type="checkbox" name="solicitar_chip" id="solicitar_chip" onchange="toggleToken()" style="margin-right: 10px; transform: scale(1.3);">
+                        Solicitar Chip do Monitoramento Plus
+                    </label>
+                    <input type="text" id="token_input" name="token_rastreador" placeholder="Token do Rastreador (se já possuir)" style="margin-top: 15px;">
+                </div>
+            </div>
+
+            <button type="submit" style="background: var(--primary); color: white; padding: 18px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1.1rem; font-weight: bold; transition: 0.3s;">
+                🚀 Finalizar e Salvar Veículo
+            </button>
+        </form>
+    </div>
+</main>
+
+<script>
+    function toggleToken() {
+        const input = document.getElementById('token_input');
+        const check = document.getElementById('solicitar_chip');
+        if(check.checked) {
+            input.disabled = true;
+            input.style.background = "#ddd";
+            input.value = "";
+            input.placeholder = "Chip será enviado ao seu CFC";
+        } else {
+            input.disabled = false;
+            input.style.background = "white";
+            input.placeholder = "Token do Rastreador (se já possuir)";
+        }
+    }
+</script>
+</body>
+</html>

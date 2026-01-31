@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Carpass - Gestão CFC</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body { display: flex; margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; }
+        
+        /* Sidebar */
+        .sidebar { width: 250px; height: 100vh; background: #2c3e50; color: white; padding: 20px; position: fixed; }
+        .sidebar h2 { color: #3498db; margin-bottom: 30px; text-align: center; }
+        .sidebar nav a { display: block; color: white; text-decoration: none; padding: 12px; margin-bottom: 10px; border-radius: 5px; transition: 0.3s; }
+        .sidebar nav a:hover, .sidebar nav a.active { background: #34495e; border-left: 4px solid #3498db; }
+
+        /* Main Content */
+        .main-content { margin-left: 280px; padding: 20px; width: calc(100% - 300px); }
+        .header { border-bottom: 2px solid #ddd; margin-bottom: 30px; }
+
+        /* Formulário de Cadastro */
+        .form-cadastro { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 40px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .hint { font-size: 0.85rem; color: #7f8c8d; }
+
+        /* Grid de Veículos (Minha Frota) */
+        .marketplace-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 20px; 
+        }
+        .car-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .car-images-container { height: 180px; background: #f5f5f5; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .car-images-container img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .car-info { padding: 15px; }
+        .badge-rastreador { background: #e8f6ef; color: #27ae60; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+        
+        .btn-action { width: 100%; padding: 10px; background: #2c3e50; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2>CARPASS</h2>
+        <nav>
+            <a href="/dashboard">🏠 Dashboard</a>
+            <a href="/marketplace">🔍 Buscar Carros</a>
+            <a href="/frota" class="active">🚗 Minha Frota</a>
+            <a href="/checklist">📋 Checklist Pátio</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Gestão da Frota - CFC</h1>
+        </header>
+
+        <section class="form-cadastro">
+            <h3>Cadastrar Novo Veículo</h3>
+            <form>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div class="form-group">
+                        <label>Modelo do Veículo</label>
+                        <input type="text" placeholder="Ex: Corolla Toyota SUV">
+                    </div>
+                    <div class="form-group">
+                        <label>Token do Rastreador <span class="hint">(Opcional)</span></label>
+                        <input type="text" placeholder="Insira o código do token se houver">
+                    </div>
+                </div>
+                <button type="button" class="btn-action" style="background: #3498db; width: auto; padding: 10px 30px;">Salvar Veículo</button>
+            </form>
+        </section>
+
+        <h3>Veículos Ativos</h3>
+        <section class="marketplace-grid">
+            
+            <div class="car-card">
+                <div class="car-images-container">
+                    <img src="{{ url_for('static', filename='img/hb20_frente.jpg') }}" alt="HB20 2024">
+                </div>
+                <div class="car-info">
+                    <span class="badge-rastreador">✓ Rastreador Ativo</span>
+                    <h3>HB20 - 2024</h3>
+                    <p>Cor: Branco | Câmbio: Manual</p>
+                    <p><strong>Placa:</strong> ABC-1234</p>
+                    <button class="btn-action">Gerenciar Veículo</button>
+                </div>
+            </div>
+
+            <div class="car-card">
+                <div class="car-images-container">
+                    <img src="{{ url_for('static', filename='img/corolla_frente.jpg') }}" alt="Corolla SUV">
+                </div>
+                <div class="car-info">
+                    <span class="badge-rastreador" style="background: #fdf2e9; color: #e67e22;">⚠️ Sem Rastreador</span>
+                    <h3>Toyota Corolla SUV</h3>
+                    <p>Cor: Prata | Câmbio: Automático</p>
+                    <p><strong>Placa:</strong> XYZ-5678</p>
+                    <button class="btn-action">Gerenciar Veículo</button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>
