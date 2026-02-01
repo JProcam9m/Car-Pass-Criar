@@ -4,24 +4,30 @@ O **Carpass** é uma plataforma inovadora que conecta Centros de Formação de C
 
 ---
 
-## 🚀 Funcionalidades Principais: Visão do Instrutor
+## 🚀 Funcionalidades Principais
 
-A interface do instrutor foi desenhada para ser mobile-first, permitindo a gestão completa das aulas e locações diretamente do smartphone.
+### 🏢 Visão do CFC (Administrativo)
+O administrador tem controle total sobre os ativos e a saúde financeira da unidade.
 
-### 📱 Gestão e Marketplace
-O instrutor tem autonomia para gerenciar sua agenda e escolher veículos disponíveis na rede.
+* **Dashboard de Frota:** Visualização rápida da frota ativa e monitoramento de aulas em andamento.
+![Dashboard Carpass](static/img/imgcfc/dashboardcfc.png)
 
-* **Marketplace de Veículos:** Navegação por modelos disponíveis para locação em diferentes CFCs.
+* **Gestão Financeira:** Controle detalhado de receita bruta, repasses para instrutores e lucro líquido da unidade.
+![Gestão Financeira](static/img/imgcfc/financiascfc.png)
+
+* **Cadastro de Veículos (Ficha Técnica):** Interface para registro de dados oficiais.
+![Ficha Técnica](static/img/imgcfc/Captura%20de%20tela%202026-01-31%20205639.png)
+
+---
+
+### 📱 Visão do Instrutor (Mobile)
+Interface desenhada para ser mobile-first, permitindo a gestão completa das aulas e locações diretamente do smartphone.
+
+* **Marketplace e Agenda:** Autonomia para escolher veículos disponíveis na rede credenciada e gerenciar horários reservados.
 ![Marketplace](static/img/imginstrutores/marketplace.png)
-
-* **Agenda e Pedidos:** Controle total sobre os horários reservados e histórico de solicitações.
 ![Agenda](static/img/imginstrutores/agenda.png)
 
-* **Painel do Instrutor:** Visão consolidada das aulas agendadas e status dos veículos.
-![Painel](static/img/imginstrutores/painelinstrutores.png)
-
-### 📝 Checklist Digital de Retirada
-O processo de retirada é 100% digital, garantindo segurança jurídica para o instrutor e para o CFC.
+* **Checklist Digital de Retirada:** Processo em três etapas (Registros, Avarias e Validação) para garantir a segurança jurídica na locação.
 
 <table style="width: 100%;">
   <tr>
