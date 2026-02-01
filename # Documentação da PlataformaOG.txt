@@ -1,0 +1,230 @@
+Carpass
+Documentação de Software – Hackathon
+1. Visão Geral do Sistema
+
+O Carpass é uma plataforma digital que conecta CFCs (autoescolas) e instrutores, permitindo a locação de veículos para aulas práticas, com ou sem plano de assinatura.
+O sistema centraliza cadastro de veículos, controle de locações, regras contratuais e validações operacionais.
+
+2. Problema e Proposta de Valor
+
+Instrutores nem sempre possuem veículo próprio ou precisam de flexibilidade para ministrar aulas.
+O Carpass resolve isso oferecendo:
+
+Locação direta entre CFCs e instrutores
+
+Modelo de assinatura por pacotes
+
+Controle de uso, quilometragem e regras
+
+Opção de rastreamento veicular
+
+3. Perfis de Usuário
+3.1 CFC (Autoescola)
+
+Cadastra e gerencia veículos
+
+Define regras e valores de locação
+
+Visualiza veículos alugados e disponíveis
+
+3.2 Instrutor
+
+Realiza locação de veículos
+
+Pode utilizar o sistema com ou sem plano Carpass
+
+Responsável pelo uso do veículo durante a locação
+
+4. Funcionalidades do Sistema
+4.1 Funcionalidades do CFC
+
+Cadastrar veículos
+
+Visualizar veículos alugados
+
+Visualizar veículos disponíveis para locação
+
+4.2 Cadastro de Veículos
+
+Fotos do veículo: interna e externa
+
+Chassi
+
+Foto do documento do veículo
+
+Ano/Modelo
+
+Tipo de combustível: Álcool, Gasolina, Flex ou Diesel
+
+Verificação de duplo comando: Sim ou Não
+
+Categoria do veículo: SUV, Hatchback ou Sedan
+
+Documentação: RENAVAM, CRLV (Certificado de Registro e Licenciamento do Veículo)
+
+Tipo de transmissão: Automático ou Manual
+
+4.3 Solicitação de Alocação
+
+Período de locação
+
+Dados do locador
+
+5. Modelos de Locação
+5.1 Locação sem Carpass
+Termos de Uso
+
+Objetos perdidos
+
+Proibição de terceiros utilizarem o veículo
+
+Sinistros
+
+Roubo e furto
+
+Avarias
+
+Entrega e devolução do veículo
+
+Valores Sugeridos
+
+R$ 90,00 a diária
+
+R$ 700,00 semanal
+
+R$ 3.000,00 a R$ 4.000,00 mensal
+
+Validações na Retirada do Veículo
+
+Registro de avarias (fotos internas e externas)
+
+Quilometragem inicial
+
+Verificação de combustível (Tanque cheio)
+
+Retirada e devolução no mesmo local
+
+Verificação de multas e licenciamento
+
+Confirmação de pagamento para início da locação
+
+5.2 Locação com Carpass (Modelo por Pacotes)
+Plano Carpass
+
+Modelo de locação por assinatura
+
+Assinatura mensal garante uso de veículos de CFCs credenciados no mesmo município
+
+Planos disponíveis:
+
+Plano Standard: acesso a CFCs menores – R$ 69,90
+
+Plano Pro: acesso a maior número de CFCs – R$ 129,90
+
+Utilização do Veículo
+
+Seleção do período de locação
+
+Retirada do veículo no CFC
+
+Aulas ministradas com o veículo alugado
+
+Pagamento ao final da locação com:
+
+Registro do hodômetro final
+
+Cobrança por quilômetro rodado conforme estipulado pelo CFC
+
+Validações na Retirada
+
+Registro de avarias (fotos internas e externas)
+
+Quilometragem inicial
+
+Verificação de combustível (Tanque cheio)
+
+Retirada e devolução no mesmo local
+
+Verificação de multas e licenciamento
+
+Confirmação de retirada do veículo
+
+6. Regras de Negócio
+
+Multas ocorridas durante a aula ou vigência do contrato são de responsabilidade do locatário
+
+Cancelamento de contrato gera multa:
+
+30% para locação diária
+
+20% para locação semanal
+
+10% para locação mensal
+
+O valor da multa é descontado do montante a ser recebido pelo instrutor
+
+7. Responsabilidades e Termos Gerais
+Responsabilidade do Usuário
+
+O usuário é integralmente responsável por multas, infrações, danos, acidentes, perdas, apreensões e qualquer uso indevido do veículo durante a locação.
+
+Requisitos para Uso da Plataforma
+
+CNH válida
+
+Atendimento aos requisitos legais
+
+Informações verdadeiras e atualizadas
+
+Pagamentos, Taxas e Cancelamentos
+
+Cobrança de taxas de locação, intermediação e multas contratuais
+
+Penalidades em caso de descumprimento das regras
+
+Suspensão e Exclusão de Conta
+
+A conta poderá ser suspensa ou encerrada em caso de violação dos Termos de Uso ou risco operacional.
+
+8. Rastreamento Veicular
+Fabricação do Rastreador
+
+Componentes e custos estimados:
+
+ESP32: R$ 30 – R$ 45
+
+GPS NEO-6M: R$ 45 – R$ 70
+
+SIM800L (GSM/GPRS): R$ 50 – R$ 80
+
+Antenas GPS + GSM: R$ 20 – R$ 40
+
+Energia (Bateria Li-ion, TP4056, Conversor Buck): R$ 43 – R$ 67
+
+Custo total estimado:
+
+Entre R$ 190 e R$ 270
+
+Rastreador Vinculado ao Seguro
+
+Planos a partir de R$ 69,90
+(https://www.carsystem.com/
+)
+
+Rastreador Pronto
+
+Valores a partir de R$ 55,49
+(https://www.mercadolivre.com.br/rastreador-gps-t3-car-9-100v-antena-embutida-de-grande-tens/p/MLB2022863618?matt_tool=18956390&utm_source=google_shopping&utm_medium=organic&pdp_filters=item_id%3AMLB5968293920&from=gshop
+)
+
+9. Tecnologia Aplicada
+
+Linguagens: Python
+
+Framework: Flask
+
+Front-end: HTML e CSS
+
+IDE: Visual Studio Code
+
+I.A.: Claude, ChatGPT
